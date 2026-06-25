@@ -1,0 +1,87 @@
+[
+  {
+    "id": "mango",
+    "name": "芒果",
+    "category": "果樹",
+    "growthStages": [
+      "開花期",
+      "幼果期",
+      "果實肥大期",
+      "採收期",
+      "採收後管理"
+    ],
+    "weatherSensitivity": [
+      "高溫",
+      "降雨",
+      "強風",
+      "高濕"
+    ]
+  },
+  {
+    "id": "banana",
+    "name": "香蕉",
+    "category": "果樹",
+    "growthStages": [
+      "營養生長期",
+      "抽穗期",
+      "果實發育期",
+      "採收期"
+    ],
+    "weatherSensitivity": [
+      "強風",
+      "低溫",
+      "高濕"
+    ]
+  },
+  {
+    "id": "rice",
+    "name": "水稻",
+    "category": "糧食作物",
+    "growthStages": [
+      "秧苗期",
+      "分蘗期",
+      "孕穗期",
+      "抽穗期",
+      "成熟期"
+    ],
+    "weatherSensitivity": [
+      "低溫",
+      "高溫",
+      "豪雨",
+      "強風"
+    ]
+  },
+  {
+    "id": "tomato",
+    "name": "番茄",
+    "category": "蔬菜",
+    "growthStages": [
+      "育苗期",
+      "定植期",
+      "開花結果期",
+      "採收期"
+    ],
+    "weatherSensitivity": [
+      "高濕",
+      "降雨",
+      "高溫"
+    ]
+  },
+  {
+    "id": "lotus",
+    "name": "蓮霧",
+    "category": "果樹",
+    "growthStages": [
+      "花芽分化期",
+      "開花期",
+      "幼果期",
+      "採收期"
+    ],
+    "weatherSensitivity": [
+      "降雨",
+      "強風",
+      "低溫",
+      "高濕"
+    ]
+  }
+]

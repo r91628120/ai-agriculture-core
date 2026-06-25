@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "harvestTransport": {
+    "highWindMs": 8,
+    "mediumWindMs": 4,
+    "highRainMm": 20,
+    "mediumRainMm": 5
+  },
+  "qualityStorage": {
+    "highHumidity": 85,
+    "mediumHumidity": 75,
+    "highTemp": 34,
+    "mediumTemp": 30
+  },
+  "disease": {
+    "highHumidity": 85,
+    "mediumHumidity": 75,
+    "rainTriggerMm": 5
+  },
+  "confidence": {
+    "threeStationsComplete": 95,
+    "twoStationsComplete": 85,
+    "singleStation": 70,
+    "missingRainPenalty": 15,
+    "staleDataPenalty": 20
+  }
+}

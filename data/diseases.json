@@ -1,0 +1,54 @@
+[
+  {
+    "id": "mango-anthracnose",
+    "crop": "芒果",
+    "name": "炭疽病",
+    "riskFactors": [
+      "高濕",
+      "降雨",
+      "通風不良"
+    ],
+    "riskRule": "humidity>=80 || rainMm>=5"
+  },
+  {
+    "id": "mango-powdery-mildew",
+    "crop": "芒果",
+    "name": "白粉病",
+    "riskFactors": [
+      "乾濕變化",
+      "通風不良"
+    ],
+    "riskRule": "humidity>=70 && temp>=20 && temp<=30"
+  },
+  {
+    "id": "banana-yellow-leaf",
+    "crop": "香蕉",
+    "name": "黃葉病",
+    "riskFactors": [
+      "排水不良",
+      "土壤病原菌"
+    ],
+    "riskRule": "rainMm>=20 || humidity>=85"
+  },
+  {
+    "id": "rice-blast",
+    "crop": "水稻",
+    "name": "稻熱病",
+    "riskFactors": [
+      "高濕",
+      "低日照",
+      "溫差"
+    ],
+    "riskRule": "humidity>=85 && sunshine<=3"
+  },
+  {
+    "id": "tomato-late-blight",
+    "crop": "番茄",
+    "name": "晚疫病",
+    "riskFactors": [
+      "低溫高濕",
+      "連續降雨"
+    ],
+    "riskRule": "humidity>=85 && rainMm>=5"
+  }
+]

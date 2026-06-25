@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "temperature": {
+    "high": {
+      "medium": 30,
+      "high": 34
+    },
+    "low": {
+      "medium": 15,
+      "high": 10
+    }
+  },
+  "rain": {
+    "mediumMm": 5,
+    "highMm": 20,
+    "extremeMm": 80
+  },
+  "wind": {
+    "mediumMs": 4,
+    "highMs": 8,
+    "extremeMs": 12
+  },
+  "humidity": {
+    "medium": 75,
+    "high": 85
+  },
+  "sunshine": {
+    "lowHours": 3,
+    "sufficientHours": 6
+  }
+}
