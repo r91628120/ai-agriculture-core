@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI農業氣象決策支援系統 V3.0｜AI Agricultural Weather Decision Support System</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Header -->
+
+<header class="header">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🌦️
+        </div>
+
+        <div>
+            <h1>AI農業氣象決策支援系統</h1>
+            <p>AI Agricultural Weather Decision Support System</p>
+        </div>
+
+    </div>
+
+    <nav>
+
+        <a href="../index.html">回首頁</a>
+
+        <a href="#analysis">開始分析</a>
+
+        <a href="#guide">教學說明</a>
+
+    </nav>
+
+</header>
+
+<!-- Hero -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="badge">
+            AI AGRICULTURAL WEATHER DECISION SUPPORT SYSTEM
+        </span>
+
+        <h2>
+            AI農業氣象決策支援系統 V3.0
+        </h2>
+
+        <p>
+            整合農業氣象站資料、AI風險評估、病害燈號、農事建議與情境推演，
+            協助學生與農業實務工作者把氣象資料轉化為可行的農業決策。
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- V3.0 AI 決策中心儀表板 -->
+<section class="container v3-dashboard-section">
+  <div class="v3-dashboard-card">
+
+    <div class="v3-dashboard-head">
+      <div>
+        <span class="v3-kicker">PROFESSIONAL DECISION DASHBOARD</span>
+        <h3>🌦️ AI農業氣象決策中心</h3>
+        <p>
+          從「單一測站查詢」升級為「區域決策支援」：
+          目前先呈現專業首頁儀表板，下一階段將加入最近三站融合分析、AI可信度與決策流程。
+        </p>
+      </div>
+
+      <div class="v3-score-box">
+        <span>AI DSS</span>
+        <strong>V3.0</strong>
+        <small>Decision Support</small>
+      </div>
+    </div>
+
+    <div class="v3-dashboard-grid">
+      <div class="v3-metric">
+        <span>📍</span>
+        <small>分析位置</small>
+        <strong id="v3Location">尚未選擇</strong>
+      </div>
+
+      <div class="v3-metric">
+        <span>🌾</span>
+        <small>作物情境</small>
+        <strong id="v3Crop">尚未輸入</strong>
+      </div>
+
+      <div class="v3-metric">
+        <span>📡</span>
+        <small>測站模式</small>
+        <strong>最近測站 → 三站融合</strong>
+      </div>
+
+      <div class="v3-metric">
+        <span>⭐</span>
+        <small>AI可信度</small>
+        <strong id="v3Confidence">待分析</strong>
+      </div>
+    </div>
+
+    <div class="v3-flow">
+      <div>農業氣象站</div>
+      <span>→</span>
+      <div>最近測站</div>
+      <span>→</span>
+      <div>AI風險評估</div>
+      <span>→</span>
+      <div>病害與農事建議</div>
+      <span>→</span>
+      <div>決策推演</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 分析區 -->
+
+<section id="analysis" class="container">
+
+    <div class="card">
+
+        <h3>🌾 作物與產地設定</h3>
+
+        <label>作物名稱</label>
+
+        <input
+            type="text"
+            id="cropInput"
+            placeholder="例如：芒果、蓮霧、香蕉、洋蔥">
+
+        <label>產地縣市</label>
+
+        <select id="countySelect">
+
+            <option value="">
+                請選擇縣市
+            </option>
+
+        </select>
+
+        <label>產地鄉鎮</label>
+
+        <select id="townshipSelect">
+
+            <option value="">
+                請選擇鄉鎮
+            </option>
+
+        </select>
+
+        <button id="analyzeBtn">
+
+            開始氣象分析
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- 分析結果 -->
+
+<section class="container">
+
+     <div class="weather-dashboard" id="weatherDashboard">
+  <div class="weather-card">
+    <span>🌡️</span>
+    <p>氣溫</p>
+    <strong id="dashTemp">-- ℃</strong>
+  </div>
+
+  <div class="weather-card">
+    <span>💧</span>
+    <p>濕度</p>
+    <strong id="dashHumidity">-- %</strong>
+  </div>
+
+  <div class="weather-card">
+    <span>🌧️</span>
+    <p>雨量</p>
+    <strong id="dashRain">-- mm</strong>
+  </div>
+
+  <div class="weather-card">
+    <span>💨</span>
+    <p>風速</p>
+    <strong id="dashWind">-- m/s</strong>
+  </div>
+
+  <div class="weather-card">
+    <span>☀️</span>
+    <p>日照</p>
+    <strong id="dashSunshine">-- hr</strong>
+  </div>
+</div>
+
+
+    <div class="result-grid">
+
+        <!-- 左側 -->
+
+        <div class="card">
+
+            <h3>☀️ 農業氣象風險分析</h3>
+
+            <div id="weatherRisk">
+
+                尚未分析
+
+            </div>
+
+        </div>
+
+        <!-- 右側 -->
+
+        <div class="card">
+
+            <h3>🚨 AI重大氣候警示</h3>
+
+            <div id="climateAlert">
+
+                尚未分析
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- V3.0 AI 決策中心：三站融合、可信度、決策矩陣 -->
+<section class="container" id="decisionCenterSection">
+  <div class="decision-center-grid">
+
+    <div class="card fusion-card">
+      <h3>🔄 三站融合分析</h3>
+      <p class="section-note">
+        系統會自動比對最近三個農業氣象站，降低單一測站誤差，提升區域判讀可信度。
+      </p>
+      <div id="stationFusionPanel" class="station-fusion-panel">
+        <div class="empty-state">請先完成氣象分析，系統會產生最近三站融合資料。</div>
+      </div>
+    </div>
+
+    <div class="card confidence-card">
+      <h3>⭐ AI可信度評分</h3>
+      <p class="section-note">
+        依據資料完整度、測站距離、三站一致性與更新狀態，產生 AI 可信度。
+      </p>
+      <div id="aiConfidencePanel" class="ai-confidence-panel">
+        <div class="empty-state">請先完成氣象分析，系統會產生可信度評分。</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="decision-center-grid decision-center-grid-second">
+
+    <div class="card decision-confidence-card">
+      <h3>🧠 AI Decision Confidence</h3>
+      <p class="section-note">
+        依據目前風險等級與資料可信度，推估本次農事決策的可採信程度。
+      </p>
+      <div id="decisionConfidencePanel" class="decision-confidence-panel">
+        <div class="empty-state">請先完成氣象分析，系統會產生 Decision Confidence。</div>
+      </div>
+    </div>
+
+    <div class="card decision-matrix-card">
+      <h3>📊 AI決策矩陣</h3>
+      <p class="section-note">
+        將氣溫、濕度、雨量、風速、病害與採收風險整理成可解釋的決策矩陣。
+      </p>
+      <div id="decisionMatrixPanel" class="decision-matrix-panel">
+        <div class="empty-state">請先完成氣象分析，系統會產生 AI 決策矩陣。</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- 高價值升級區：病害燈號、農事建議、歷史圖表、情境推演 -->
+<section class="container" id="smartDecisionSection">
+  <div class="smart-grid">
+
+    <div class="card">
+      <h3>🦠 AI病害風險燈號</h3>
+      <p class="section-note">依據氣溫、濕度、雨量與作物類型，推估今日常見病害風險。</p>
+      <div id="diseaseRiskLights" class="disease-lights">
+        <div class="empty-state">請先完成氣象分析，系統會自動產生病害風險燈號。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📌 AI農事建議卡</h3>
+      <p class="section-note">把氣象條件轉換成今日可執行的農事提醒。</p>
+      <div id="farmAdviceCards" class="advice-card-grid">
+        <div class="empty-state">請先完成氣象分析，系統會自動產生今日農事建議。</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card history-card">
+    <h3>📈 歷史氣象圖表</h3>
+    <p class="section-note">每次分析後會在本機瀏覽器留下紀錄，可用來觀察最近氣溫、濕度與雨量變化。</p>
+
+    <div class="history-toolbar">
+      <button onclick="clearWeatherHistory()" class="btn-clear">🧹 清除歷史紀錄</button>
+    </div>
+
+    <div id="historyChartArea" class="history-chart-area">
+      <div class="empty-state">尚無歷史紀錄。完成幾次氣象分析後，這裡會出現趨勢圖。</div>
+    </div>
+  </div>
+
+  <div class="card simulation-card">
+    <h3>🎮 氣象情境推演</h3>
+    <p class="section-note">讓學生用農場經營者角度，根據氣象風險做決策。</p>
+
+    <div id="scenarioQuestion" class="scenario-question">
+      請先完成氣象分析，系統會依目前作物與氣象條件產生推演題。
+    </div>
+
+    <div class="scenario-options">
+      <button onclick="answerScenario('A')">A. 立即採取預防措施</button>
+      <button onclick="answerScenario('B')">B. 維持原計畫並加強巡田</button>
+      <button onclick="answerScenario('C')">C. 暫緩作業，等待天氣穩定</button>
+    </div>
+
+    <div id="scenarioFeedback" class="scenario-feedback">
+      選擇一個決策後，系統會給出農業經營推演回饋。
+    </div>
+  </div>
+</section>
+
+
+<!-- AI氣象決策指令區 -->
+<section class="container" id="aiPromptSection">
+  <div class="card ai-prompt-card">
+    <h3>🤖 AI氣象決策指令區</h3>
+    <p>
+      完成氣象分析後，可複製下方指令，貼到「AI農業氣象教練 GPT」進行更深入的農事決策推演。
+    </p>
+
+    <textarea id="aiPromptOutput" readonly>
+請先完成氣象分析，系統會自動產生可複製的 AI 農業氣象決策指令。
+    </textarea>
+
+    <div class="button-group">
+      <button onclick="copyAIPrompt()">📋 複製 AI 指令</button>
+
+      <a
+        class="link-btn"
+        href="https://chatgpt.com/g/g-6a391cc88d8c8191a7985d213e03a9f6-ainong-ye-qi-xiang-jiao-lian"
+        target="_blank"
+        rel="noopener">
+        🤖 開啟 AI農業氣象教練
+      </a>
+
+      <button onclick="clearAIPrompt()" class="btn-clear">
+         🧹 清除指令
+      </button>
+
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- 教學說明 -->
+
+<section id="guide" class="container">
+
+    <div class="card">
+
+        <h3>📘 教學說明</h3>
+
+        <p>
+
+            本工具協助學生理解：
+
+        </p>
+
+        <ul>
+
+            <li>氣候與農業的關聯</li>
+
+            <li>高溫風險對作物影響</li>
+
+            <li>豪雨與颱風風險</li>
+
+            <li>採收與運輸時機判斷</li>
+
+            <li>農產品市場供應變化</li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+<footer>
+  <div class="footer-eco">
+    <h3>🌱 AI農業教育生態系</h3>
+    <p>
+      從農業氣象、作物診療、植物探索到農產品大數據分析，
+      打造高中職農業教育的 AI 學習平台。
+    </p>
+
+    <div class="footer-grid">
+      <a class="footer-card" href="../index.html">
+        <span>🌾</span>
+        AI農產品大數據教學平台
+      </a>
+
+      <a class="footer-card" href="../../ai-agri-weather-coach/ai-agri-weather-coach/" target="_blank">
+        <span>🌦️</span>
+        AI農業氣象教練
+      </a>
+
+      <a class="footer-card" href="../../ai-plant-clinic/" target="_blank">
+        <span>🩺</span>
+        AI植物診療師
+      </a>
+
+      <a class="footer-card" href="../../ai-agri-education/" target="_blank">
+        <span>🏫</span>
+        AI農業教育平台
+      </a>
+    </div>
+
+    <div class="footer-bottom">
+      AI農業氣象決策支援系統 V3.0 ｜ AI Agricultural Weather Decision Support System
+    </div>
+  </div>
+</footer>
+
+<!-- Service -->
+<script src="services/WeatherAPI.js"></script>
+<script src="services/StationService.js"></script>
+
+
+<!-- Engine -->
+<script src="engine/WeatherFusionEngine.js"></script>
+<script src="engine/WeatherEngine.js"></script>
+<script src="engine/CropEngine.js"></script>
+<script src="engine/DiseaseEngine.js"></script>
+<script src="engine/DecisionEngine.js"></script>
+<script src="engine/PromptEngine.js"></script>
+<script src="modules/WeatherDashboardModule.js"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<!-- AI Agriculture Core -->
+
+<script src="AIAKOS.js"></script>
+
+
+
+<!-- 主程式 -->
+<script src="script.js?v=20260625-v3"></script>
+
+
+</body>
+</html>
