@@ -1,101 +1,221 @@
 # AIAKOS Development Log
 
+# AI Agricultural Knowledge Operating System
+
+---
+
+# Project
+
+AIAKOS
+
 AI Agricultural Knowledge Operating System
 
----
+Author：
+Lin Yu-Zer
 
-## Version
+Started：
+2026-06-25
 
-v1.0
+Status：
+Development
 
----
-
-# 2026-06-27
-
-## Core
-
-✅ 建立 AIAKOS.js
-
-完成 AI Agriculture Core Controller
+Current Version：
+v1.1 (Controller Layer)
 
 ---
 
-## Weather
+# Architecture
 
-✅ WeatherAPI
+AIAKOS
 
-✅ StationService
-
-✅ WeatherEngine
-
-✅ WeatherFusionEngine
-
----
-
-## Crop
-
-✅ CropEngine
-
-建立 crops.json
-
----
-
-## Disease
-
-✅ DiseaseEngine
-
-建立 diseases.json
-
-完成病害風險推估
+```
+Application
+      │
+      ▼
+Controller Layer
+      │
+      ▼
+Engine Layer
+      │
+      ▼
+Service Layer
+      │
+      ▼
+Knowledge Layer
+      │
+      ▼
+Data Layer
+```
 
 ---
 
-## Decision
+# Folder Structure
 
-✅ DecisionEngine
+```
+ai-agriculture-core/
 
-完成：
+data/
+engine/
+modules/
+services/
+utils/
 
-AI Confidence
-
-Decision Matrix
-
-Farm Actions
-
-Summary
-
----
-
-## Prompt
-
-✅ PromptEngine
-
-完成：
-
-Weather Coach Prompt
-
-GPT Prompt Builder
+AIAKOS.js
+index.html
+script.js
+style.css
+```
 
 ---
 
-## AIAKOS
+# Milestone 01
 
-✅ analyze()
+## Engine Layer
 
-統一分析入口
+Completed
 
-Weather
+Date
+
+2026-06-27
+
+### Core
+
+- ✅ AIAKOS.js
+
+### Services
+
+- ✅ WeatherAPI.js
+- ✅ StationService.js
+
+### Engines
+
+- ✅ WeatherFusionEngine.js
+- ✅ WeatherEngine.js
+- ✅ CropEngine.js
+- ✅ DiseaseEngine.js
+- ✅ DecisionEngine.js
+- ✅ PromptEngine.js
+
+### Modules
+
+- ✅ WeatherDashboardModule.js
+
+### Functions
+
+- ✅ analyze()
+- ✅ Weather Coach Prompt
+- ✅ Disease Analysis
+- ✅ Decision Matrix
+- ✅ AI Confidence
+- ✅ GPT Prompt Builder
+
+---
+
+# Milestone 02
+
+## Controller Layer
+
+Status
+
+🚧 Developing
+
+Goal
+
+AIAKOS 成為唯一 Controller。
+
+```
+script.js
 
 ↓
 
-Disease
+AIAKOS.analyze()
 
 ↓
 
-Decision
+AIAKOS.render()
 
 ↓
 
-Prompt
+Dashboard Module
 
-全部由 AIAKOS 控制
+↓
+
+HTML
+```
+
+### Progress
+
+- ✅ render()
+- ✅ DashboardModule
+- ✅ WeatherDashboardModule
+- ⬜ CropDashboardModule
+- ⬜ DiseaseDashboardModule
+- ⬜ DecisionDashboardModule
+- ⬜ PromptDashboardModule
+
+---
+
+# Future Milestones
+
+## v1.2
+
+Knowledge Layer
+
+- Knowledge Base
+- Knowledge Graph
+- Confidence Engine
+- Memory Cache
+
+---
+
+## v1.3
+
+AI Modules
+
+- Weather AI
+- Crop AI
+- Disease AI
+- Carbon AI
+- Marketing AI
+- Education AI
+
+---
+
+## v2.0
+
+AIAKOS Platform
+
+Unified Agricultural AI Core
+
+---
+
+# Release Notes
+
+## v1.0
+
+2026-06-27
+
+Initial Release
+
+Completed Engine Layer
+
+- Weather
+- Crop
+- Disease
+- Decision
+- Prompt
+- Dashboard
+- analyze()
+
+---
+
+## v1.1
+
+In Progress
+
+Controller Layer
+
+Current Task
+
+- Dashboard Rendering
+- Controller Integration
