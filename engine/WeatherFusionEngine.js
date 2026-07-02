@@ -29,12 +29,19 @@ class WeatherFusionEngine {
       };
     }
 
+    const nearestStation =
+          validStations[0] || null;
+
     const fused = {
-      temp: this.weightedAverage(validStations, "temp"),
-      humidity: this.weightedAverage(validStations, "humidity"),
-      rainMm: this.weightedAverage(validStations, "rainMm"),
-      windSpeed: this.weightedAverage(validStations, "windSpeed"),
-      sunshine: this.weightedAverage(validStations, "sunshine")
+              temp: this.weightedAverage(validStations, "temp"),
+              humidity: this.weightedAverage(validStations, "humidity"),
+              rainMm: this.weightedAverage(validStations, "rainMm"),
+              windSpeed: this.weightedAverage(validStations, "windSpeed"),
+              sunshine: this.weightedAverage(validStations, "sunshine"),
+              obsTime: nearestStation?.current?.obsTime || "--",
+              history: Array.isArray(nearestStation?.history)
+                ? nearestStation.history.slice(-6)
+                : []
     };
 
     const consistency = this.calculateConsistency(validStations);
