@@ -13,6 +13,42 @@ class DashboardModule {
     console.log("DashboardModule v1.0 ready");
   }
 
+   /*
+   ----------------------------
+     綁定 EventBus
+   ----------------------------
+   */
+
+bindEventBus(eventBus) {
+
+    if (!eventBus) {
+        console.warn("DashboardModule：EventBus 不存在");
+        return;
+    }
+
+    eventBus.on(
+        "analysis:completed",
+        (payload) => {
+
+            console.log(
+                "[DashboardModule] analysis completed"
+            );
+
+            if (!payload || !payload.result) {
+                return;
+            }
+
+            this.render(
+                payload.result
+            );
+
+        }
+    );
+
+}
+
+
+
   render(result) {
     if (!result || result.success !== true) {
       this.renderError(result?.message || "尚未取得 AIAKOS 分析結果");
