@@ -2,86 +2,46 @@
   {
     "id": "mango",
     "name": "芒果",
+    "aliases": ["愛文芒果", "土芒果"],
     "category": "果樹",
-    "growthStages": [
-      "開花期",
-      "幼果期",
-      "果實肥大期",
-      "採收期",
-      "採收後管理"
-    ],
-    "weatherSensitivity": [
-      "高溫",
-      "降雨",
-      "強風",
-      "高濕"
-    ]
+    "idealTemp": [24, 32],
+    "idealHumidity": [60, 85],
+    "sensitiveStages": {
+      "開花期": ["連續降雨", "低溫", "高濕"],
+      "結果期": ["高溫", "豪雨", "強風"],
+      "採收期": ["降雨", "高溫", "運輸風險"]
+    },
+    "commonDiseases": ["炭疽病", "蒂腐病", "白粉病"],
+    "weatherNotes": "芒果在開花期怕連續降雨與高濕，結果與採收期需注意高溫、強風與豪雨造成落果或品質下降。"
   },
   {
     "id": "banana",
     "name": "香蕉",
+    "aliases": ["甘蕉"],
     "category": "果樹",
-    "growthStages": [
-      "營養生長期",
-      "抽穗期",
-      "果實發育期",
-      "採收期"
-    ],
-    "weatherSensitivity": [
-      "強風",
-      "低溫",
-      "高濕"
-    ]
+    "idealTemp": [25, 32],
+    "idealHumidity": [65, 90],
+    "sensitiveStages": {
+      "生長期": ["強風", "低溫", "積水"],
+      "結果期": ["強風", "豪雨"],
+      "採收期": ["高溫", "運輸風險"]
+    },
+    "commonDiseases": ["黃葉病", "葉斑病", "炭疽病"],
+    "weatherNotes": "香蕉葉片大，遇強風容易折損，連續降雨與排水不良時需注意根系與病害問題。"
   },
   {
     "id": "rice",
     "name": "水稻",
+    "aliases": ["稻米", "稻作"],
     "category": "糧食作物",
-    "growthStages": [
-      "秧苗期",
-      "分蘗期",
-      "孕穗期",
-      "抽穗期",
-      "成熟期"
-    ],
-    "weatherSensitivity": [
-      "低溫",
-      "高溫",
-      "豪雨",
-      "強風"
-    ]
-  },
-  {
-    "id": "tomato",
-    "name": "番茄",
-    "category": "蔬菜",
-    "growthStages": [
-      "育苗期",
-      "定植期",
-      "開花結果期",
-      "採收期"
-    ],
-    "weatherSensitivity": [
-      "高濕",
-      "降雨",
-      "高溫"
-    ]
-  },
-  {
-    "id": "lotus",
-    "name": "蓮霧",
-    "category": "果樹",
-    "growthStages": [
-      "花芽分化期",
-      "開花期",
-      "幼果期",
-      "採收期"
-    ],
-    "weatherSensitivity": [
-      "降雨",
-      "強風",
-      "低溫",
-      "高濕"
-    ]
+    "idealTemp": [22, 32],
+    "idealHumidity": [60, 90],
+    "sensitiveStages": {
+      "分蘗期": ["低溫", "缺水"],
+      "抽穗期": ["高溫", "低溫", "強風"],
+      "成熟期": ["豪雨", "倒伏", "病害"]
+    },
+    "commonDiseases": ["稻熱病", "紋枯病", "白葉枯病"],
+    "weatherNotes": "水稻不同生育期對溫度與水分需求差異大，抽穗期尤其需注意高低溫與強風。"
   }
 ]
