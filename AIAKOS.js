@@ -255,7 +255,10 @@ async analyze({
     }
 
     const weather =
-        fusionResult.fusion?.fused || {};
+         fusionResult.fusion?.fused || {};
+
+         weather.history =
+         fusionResult.fusion?.fused?.history || [];
 
     const diseaseDecision =
         this.analyzeDiseaseDecision({
