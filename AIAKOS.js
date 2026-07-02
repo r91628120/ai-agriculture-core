@@ -33,6 +33,9 @@ class AIAgricultureApp{
         
         this.dashboard = null;
         
+        this.analysisModule = null;
+
+        this.eventBus = null;
 
 
     }
@@ -46,6 +49,8 @@ class AIAgricultureApp{
     async init(config){
 
         console.log("Initializing Core...");
+
+        this.eventBus = new EventBus();
 
         // API
 
@@ -95,10 +100,18 @@ class AIAgricultureApp{
   
         this.dashboard =
         new WeatherDashboardModule();
+
+        this.dashboard.bindEventBus(
+        this.eventBus
+        );
+
         
-
+        
+        this.analysisModule = new AnalysisModule();
        
-
+        this.analysisModule.bindEventBus(
+        this.eventBus
+        ); 
 
 
     console.log("Core Ready");
@@ -279,6 +292,85 @@ async analyze({
     };
 }
 
+/*
+----------------------------
+AIAKOS Controller Layer v2.0
+農場決策分析統一入口
+----------------------------
+*/
+
+async analyzeFarmDecision(input = {}) {
+
+    try {
+
+        if (!input || typeof input !== "object") {
+            throw new Error("analyzeFarmDecision：輸入資料必須是物件格式");
+        }
+
+        const {
+            cropName,
+            stage = "",
+            lat,
+            lng,
+            county = "",
+            township = ""
+        } = input;
+
+        if (!cropName) {
+            throw new Error("analyzeFarmDecision：缺少 cropName");
+        }
+
+        if (!lat || !lng) {
+            throw new Error("analyzeFarmDecision：缺少 lat / lng");
+        }
+
+        const result =
+            await this.analyze({
+                cropName,
+                stage,
+                lat,
+                lng,
+                county,
+                township
+            });
+
+         this.eventBus.emit("analysis:completed", {
+              input,
+              result
+        });
+
+
+        return {
+            success: true,
+            source: "AIAKOS Controller Layer",
+            controller: "analyzeFarmDecision",
+            version: "v2.0",
+            input,
+            result,
+            timestamp: new Date().toISOString()
+        };
+
+    } catch (error) {
+
+        console.error(
+            "[AIAKOS] analyzeFarmDecision error:",
+            error
+        );
+
+        return {
+            success: false,
+            source: "AIAKOS Controller Layer",
+            controller: "analyzeFarmDecision",
+            version: "v2.0",
+            input,
+            error: error.message,
+            timestamp: new Date().toISOString()
+        };
+
+    }
+
+}
+
 render(result) {
 
     if (!this.dashboard) {
@@ -289,6 +381,15 @@ render(result) {
     this.dashboard.render(result);
 
 }
+
+buildAnalysis(result) {
+    return this.analysisModule.build(result);
+}
+
+analysisToJSON(result) {
+    return this.analysisModule.toJSON(result);
+}
+
 
 
 
