@@ -113,3 +113,10 @@ AIAKOS will support:
 Educational Research Project
 
 AI Agricultural Education Ecosystem
+
+
+# AIAKOS Framework
+
+AIAKOS Framework 是 AI Agricultural Knowledge Operating System 的核心框架。
+
+本專案不是單一網站，而是 AI 農業教育生態系的共用 Framework，提供 Controller、EventBus、Module、Engine、Service、Data 等核心能力，支援未來多個 AI 農業教育平台共同使用。

@@ -1,4 +1,4 @@
-# AIAKOS Architecture
+AIAKOS Framework
 
 AI Agricultural Knowledge Operating System
 
@@ -277,3 +277,39 @@ Create an AI Agricultural Knowledge Operating System that supports:
 One Core
 
 Unlimited Agricultural AI Applications.
+
+
+## Framework Layers
+
+```text
+Applications
+↓
+AIAKOS Controller Layer
+↓
+EventBus
+↓
+Modules
+↓
+Engines
+↓
+Services
+↓
+Data
+
+
+## 3. Development-Log.md 新增紀錄
+
+```md
+## 2026-07-02
+
+### Architecture
+- 專案正式定位為 `AIAKOS Framework`。
+- `AI Agriculture Core` 轉型為 AIAKOS Framework 的核心基礎。
+- 新增 `guides/` 資料夾，作為 Framework Developer Guide 文件區。
+- 新增 `EventBus-Guide.md`，作為事件驅動架構使用指南。
+
+### Direction
+- 未來所有 Engine、Module、Service、Agent 皆以 AIAKOS Framework 規範開發。
+
+
+
