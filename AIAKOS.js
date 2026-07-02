@@ -99,7 +99,7 @@ class AIAgricultureApp{
         this.promptEngine = new PromptEngine(); 
   
         this.dashboard =
-        new WeatherDashboardModule();
+          new DashboardModule();
 
         this.dashboard.bindEventBus(
         this.eventBus
